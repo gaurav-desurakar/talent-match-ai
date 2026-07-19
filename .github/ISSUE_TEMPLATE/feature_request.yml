@@ -1,0 +1,21 @@
+name: Feature request
+description: Propose an explainable, privacy-conscious capability
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Recruiter problem
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: Privacy, fairness, or security considerations

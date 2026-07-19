@@ -1,0 +1,11 @@
+Senior AI Product Engineer
+
+Fictional company Northstar Works is hiring an engineer to build trustworthy AI products for enterprise operations teams.
+
+- Production experience with Python and FastAPI is required.
+- Production experience with RAG applications is required.
+- React or Next.js application experience is strongly preferred.
+- Lead technical architecture and collaborate with business stakeholders.
+- Docker deployment experience is preferred.
+
+This example is entirely fictional and contains no confidential company data.

@@ -1,0 +1,12 @@
+Alex Morgan
+Senior Full-Stack AI Engineer
+
+Fictional experience
+
+- Designed and deployed a Python and FastAPI retrieval-augmented generation platform used by 12,000 employees.
+- Built accessible React and Next.js workflows for non-technical operations teams.
+- Owned Docker production deployment, monitoring, and incident reviews.
+- Led architecture workshops with product, legal, and business stakeholders.
+- Reduced evaluation time by 42% across three product teams.
+
+This resume and all entities in it are fictional.
