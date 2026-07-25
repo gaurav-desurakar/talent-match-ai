@@ -23,3 +23,6 @@ playwright-report/
 test-results/
 *.sqlite3
 uploads/
+
+# Keep the original recording local; commit the compressed documentation video.
+docs/assets/app-demo.mov

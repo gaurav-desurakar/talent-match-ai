@@ -6,6 +6,12 @@ The language model structures requirements and evidence. Application code valida
 
 > TalentMatch AI provides decision support only. Never use a score or system suggestion as the sole basis for an employment decision.
 
+## See it in action
+
+[![TalentMatch AI jobs workspace](docs/assets/app-screenshot-2.png)](docs/assets/app-demo.mp4)
+
+Select the screenshot or [watch the full product demo](docs/assets/app-demo.mp4) to see the workflow from job setup through evidence review and a recruiter-controlled next action.
+
 ## Current capabilities
 
 - Jobs-centred workflow from job description to approved scorecard and candidate analysis.

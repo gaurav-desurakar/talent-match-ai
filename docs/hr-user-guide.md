@@ -4,6 +4,12 @@ This guide explains how recruiters and HR teams should use TalentMatch AI from j
 
 > TalentMatch AI is decision support. It does not verify whether resume claims are true, rank candidates automatically, or make hiring and rejection decisions.
 
+## See the workflow
+
+[![TalentMatch AI jobs workspace](assets/app-screenshot-4.png)](assets/app-demo.mp4)
+
+Select the screenshot or [watch the product demo](assets/app-demo.mp4) for a visual walkthrough of the workflow described in this guide.
+
 ## Before you begin
 
 Confirm that:
