@@ -113,7 +113,7 @@ Save the policy before relying on its suggestion. The policy is versioned. A sug
 
 Open **Find Talent** after the scorecard is approved.
 
-1. Upload one to five PDF, DOCX, or UTF-8 TXT resumes, or add resume text manually.
+1. Upload PDF, DOCX, or UTF-8 TXT resumes, or add resume text manually.
 2. Review the extracted text, source sections, candidate display name, confidence, and warnings.
 3. Correct extraction problems before analysis.
 4. Enable **Blind-review display** when neutral labels are appropriate for the review process.

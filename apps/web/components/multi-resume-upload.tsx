@@ -15,11 +15,9 @@ interface BatchUploadResult {
 }
 
 export function MultiResumeUpload({
-  availableSlots,
   existingHashes,
   onUploaded,
 }: {
-  availableSlots: number;
   existingHashes: Set<string>;
   onUploaded: (documents: DocumentExtraction[]) => void;
 }) {
@@ -75,7 +73,7 @@ export function MultiResumeUpload({
       <label
         htmlFor="multi-resume-upload"
         className={`inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-xs font-semibold transition ${
-          availableSlots > 0 && !upload.isPending
+          !upload.isPending
             ? "cursor-pointer border-brand-100 bg-brand-50 text-brand-700 hover:border-brand-500"
             : "cursor-not-allowed border-line bg-slate-100 text-slate-400"
         }`}
@@ -89,14 +87,10 @@ export function MultiResumeUpload({
         multiple
         accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"
         className="sr-only"
-        disabled={availableSlots === 0 || upload.isPending}
+        disabled={upload.isPending}
         onChange={(event) => {
           const selected = Array.from(event.target.files ?? []);
-          if (selected.length > availableSlots) {
-            setMessage(
-              `Select no more than ${availableSlots} additional resume(s).`,
-            );
-          } else if (selected.length) {
+          if (selected.length) {
             setMessage(undefined);
             upload.mutate(selected);
           }

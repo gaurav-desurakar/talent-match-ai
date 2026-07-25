@@ -62,7 +62,7 @@ The mock provider follows the same structured contract and makes no network call
 
 The workflow is an explicit sequence of validated steps. Node outputs use Pydantic schemas. User-facing events describe phases and validated outcomes, never private reasoning. A provider result that cannot be validated or grounded fails visibly; the application does not invent a replacement result.
 
-Uploads pass through bounded, format-specific parsers before normalized text reaches the workflow. The batch workflow runs one isolated comparison per candidate, preserves input order, and never sorts candidates into an automatic ranking. It is bounded to five candidates per request. The background manager runs bounded worker threads, persists completed results, exposes cancellation between validated nodes, and streams public progress events using SSE. It intentionally does not expose private reasoning. A production multi-process deployment should replace the in-memory job registry with a distributed queue.
+Uploads pass through bounded, format-specific parsers before normalized text reaches the workflow. The batch workflow runs one isolated comparison per candidate, processes candidates sequentially within a job, preserves input order, and never sorts candidates into an automatic ranking. The background manager runs bounded worker threads, persists completed results, exposes cancellation between validated nodes and candidates, and streams public progress events using SSE. It intentionally does not expose private reasoning. A production multi-process deployment should replace the in-memory job registry with a distributed queue and enforce deployment-appropriate request, queue, rate, and provider-cost limits.
 
 ## Data and retention
 

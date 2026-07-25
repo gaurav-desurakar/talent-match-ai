@@ -1,6 +1,6 @@
 # TalentMatch AI
 
-TalentMatch AI is an open-source, evidence-based resume-to-job assessment workspace for HR teams. Recruiters create a job, approve its scorecard, compare one to five candidates, inspect verbatim resume evidence, and record a human-controlled next action.
+TalentMatch AI is an open-source, evidence-based resume-to-job assessment workspace for HR teams. Recruiters create a job, approve its scorecard, assess candidates in batches, inspect verbatim resume evidence, and record a human-controlled next action.
 
 The language model structures requirements and evidence. Application code validates the output and calculates scores deterministically. The product does not automatically rank, shortlist, or reject candidates.
 
@@ -17,7 +17,7 @@ Select the screenshot or [watch the full product demo](docs/assets/app-demo.mp4)
 - Jobs-centred workflow from job description to approved scorecard and candidate analysis.
 - Candidate profiles with resume versions and chronological role history.
 - PDF, DOCX, and UTF-8 TXT resume extraction with source references and warnings.
-- One-to-five-candidate analysis that preserves upload order and does not create a ranking.
+- Multi-candidate analysis that preserves upload order and does not create a ranking.
 - Verbatim evidence, fit score, evidence-confidence score, mandatory status, clarification flags, and interview questions.
 - Manual recruiter statuses, job-related reasons, notes, ownership, and status history.
 - Contextual PDF, JSON, and CSV exports.

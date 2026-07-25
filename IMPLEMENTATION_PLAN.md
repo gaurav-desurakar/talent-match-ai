@@ -80,7 +80,7 @@ Completed MVP experience:
 
 Completed comparison sub-milestone:
 
-- Select and transiently extract up to five resumes in one upload action.
+- Select and transiently extract multiple resumes in one upload action.
 - Edit candidate labels and extracted text before analysis.
 - Reject duplicate resume fingerprints and job/resume collisions.
 - Compare candidates in input order with no automatic ranking.
@@ -109,7 +109,7 @@ Completed job-centred hiring workflow:
 - Create a saved job from a title and pasted job description without starting candidate analysis.
 - Guide recruiters through job setup, scorecard generation, approval, resume intake, and results.
 - Edit saved job descriptions and invalidate prior approval when assessment criteria may have changed.
-- Upload or paste one to five resumes and run Find Talent without leaving the job workspace.
+- Upload or paste resumes and run Find Talent without leaving the job workspace.
 - Require an approved scorecard at both the UI and API boundaries for saved-job analysis.
 - Show completed candidate summaries in upload order and append them to the job history.
 - Open persisted candidate evidence from the job history using the shared detailed evidence report.

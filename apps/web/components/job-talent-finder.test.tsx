@@ -63,68 +63,89 @@ it("requires an approved scorecard before finding talent", async () => {
   ).toBeDisabled();
 });
 
+it("allows more than five candidates", () => {
+  renderFinder();
+
+  const addCandidate = screen.getByRole("button", { name: "+ Add manually" });
+  for (let index = 0; index < 5; index += 1) {
+    fireEvent.click(addCandidate);
+  }
+
+  expect(screen.getByLabelText("Candidate 6 display name")).toBeInTheDocument();
+});
+
 it("submits one candidate against the approved saved-job scorecard", async () => {
   let analysisPayload: Record<string, unknown> | undefined;
   const onViewEvidence = vi.fn();
   vi.stubGlobal(
     "fetch",
-    vi.fn().mockImplementation((input: RequestInfo | URL, init?: RequestInit) => {
-      const url = String(input);
-      if (url.endsWith("/api/analysis-jobs") && init?.method === "POST") {
-        analysisPayload = JSON.parse(String(init.body)) as Record<string, unknown>;
+    vi
+      .fn()
+      .mockImplementation((input: RequestInfo | URL, init?: RequestInit) => {
+        const url = String(input);
+        if (url.endsWith("/api/analysis-jobs") && init?.method === "POST") {
+          analysisPayload = JSON.parse(String(init.body)) as Record<
+            string,
+            unknown
+          >;
+          return Promise.resolve(
+            new Response(
+              JSON.stringify({
+                job_id: "analysis-1",
+                status: "completed",
+                candidate_count: 1,
+                completed_count: 1,
+                comparison_ids: ["comparison-1"],
+                events_url: "/api/analysis-jobs/analysis-1/events",
+                latest_event: null,
+                error: null,
+                created_at: "2026-07-19T04:00:00Z",
+                completed_at: "2026-07-19T04:00:01Z",
+              }),
+              { status: 202, headers: { "Content-Type": "application/json" } },
+            ),
+          );
+        }
+        if (url.endsWith("/api/comparisons/comparison-1")) {
+          return Promise.resolve(
+            new Response(
+              JSON.stringify({
+                comparison_id: "comparison-1",
+                candidate_display_name: "Candidate 1",
+                fit_score: 84,
+                mandatory_status: "met",
+              }),
+              { status: 200, headers: { "Content-Type": "application/json" } },
+            ),
+          );
+        }
         return Promise.resolve(
-          new Response(
-            JSON.stringify({
-              job_id: "analysis-1",
-              status: "completed",
-              candidate_count: 1,
-              completed_count: 1,
-              comparison_ids: ["comparison-1"],
-              events_url: "/api/analysis-jobs/analysis-1/events",
-              latest_event: null,
-              error: null,
-              created_at: "2026-07-19T04:00:00Z",
-              completed_at: "2026-07-19T04:00:01Z",
-            }),
-            { status: 202, headers: { "Content-Type": "application/json" } },
-          ),
+          new Response(JSON.stringify([]), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+          }),
         );
-      }
-      if (url.endsWith("/api/comparisons/comparison-1")) {
-        return Promise.resolve(
-          new Response(
-            JSON.stringify({
-              comparison_id: "comparison-1",
-              candidate_display_name: "Candidate 1",
-              fit_score: 84,
-              mandatory_status: "met",
-            }),
-            { status: 200, headers: { "Content-Type": "application/json" } },
-          ),
-        );
-      }
-      return Promise.resolve(
-        new Response(JSON.stringify([]), {
-          status: 200,
-          headers: { "Content-Type": "application/json" },
-        }),
-      );
-    }),
+      }),
   );
   renderFinder("reviewed", onViewEvidence);
   await screen.findByRole("button", { name: /find talent — compare/i });
 
   fireEvent.change(screen.getByLabelText("Candidate 1 resume"), {
     target: {
-      value: "Candidate One\nBuilt and operated Python production services for users.",
+      value:
+        "Candidate One\nBuilt and operated Python production services for users.",
     },
   });
-  fireEvent.click(screen.getByRole("checkbox", { name: /approve this analysis/i }));
+  fireEvent.click(
+    screen.getByRole("checkbox", { name: /approve this analysis/i }),
+  );
   fireEvent.click(
     screen.getByRole("button", { name: /find talent — compare 1 candidate/i }),
   );
 
-  expect(await screen.findByText("Talent comparison complete")).toBeInTheDocument();
+  expect(
+    await screen.findByText("Talent comparison complete"),
+  ).toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "View evidence" }));
   expect(onViewEvidence).toHaveBeenCalledWith(
     expect.objectContaining({ comparison_id: "comparison-1" }),

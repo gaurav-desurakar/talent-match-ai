@@ -211,7 +211,7 @@ def test_batch_blind_review_uses_neutral_candidate_labels() -> None:
     assert comparison["comparison"]["candidate_display_name"] == "Candidate 1"
 
 
-def test_batch_comparison_limits_candidate_count() -> None:
+def test_batch_comparison_accepts_more_than_five_candidates() -> None:
     candidates = [
         {
             "candidate_id": f"candidate-{index}",
@@ -228,5 +228,5 @@ def test_batch_comparison_limits_candidate_count() -> None:
         },
     )
 
-    assert response.status_code == 422
-    assert response.json()["error"]["code"] == "VALIDATION_FAILED"
+    assert response.status_code == 201
+    assert response.json()["candidate_count"] == 6

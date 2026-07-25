@@ -243,7 +243,7 @@ class CandidateComparisonInput(BaseModel):
 
 class BatchComparisonRequest(BaseModel):
     job_description_text: Annotated[str, Field(min_length=30, max_length=100_000)]
-    candidates: list[CandidateComparisonInput] = Field(min_length=1, max_length=5)
+    candidates: list[CandidateComparisonInput] = Field(min_length=1)
     provider: str = Field(
         default="mock",
         pattern=r"^(mock|openai|anthropic|google|groq|compatible|ollama)$",

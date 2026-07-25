@@ -9,7 +9,7 @@ The local API has no authentication. Bind it only to a trusted environment unles
 - `GET /api/health` — process health.
 - `GET /api/providers` — safe provider metadata with no credentials.
 - `POST /api/comparisons` — run the synchronous first-slice comparison.
-- `POST /api/comparisons/batch` — compare one to five candidates against one job description.
+- `POST /api/comparisons/batch` — compare an ordered candidate batch against one job description.
 - `POST /api/job-descriptions/upload` — validate and transiently extract a PDF, DOCX, or TXT job description.
 - `POST /api/resumes/upload` — validate and transiently extract a PDF, DOCX, or TXT resume.
 - `POST /api/analysis-jobs` — start a process-local background comparison workflow whose completed records are persisted.
@@ -42,7 +42,7 @@ The local API has no authentication. Bind it only to a trusted environment unles
 
 `POST /api/comparisons` accepts job-description text, resume text, provider selection, blind-review state, and optional scoring weights. External providers require a matching `credential_session_id`. Invalid requests use the standard error envelope with a code, safe message, details, and request ID. Document text is never echoed in validation errors.
 
-`POST /api/comparisons/batch` accepts shared job-description text and an ordered `candidates` list. Each candidate has a unique caller-defined ID, display name, resume text, and optional source references. The response preserves the submitted order and contains an independent evidence report for every candidate; it does not create a ranking. A batch is limited to five candidates. Blind review replaces display names with neutral `Candidate N` labels.
+`POST /api/comparisons/batch` accepts shared job-description text and a non-empty ordered `candidates` list. Each candidate has a unique caller-defined ID, display name, resume text, and optional source references. The response preserves the submitted order and contains an independent evidence report for every candidate; it does not create a ranking. Blind review replaces display names with neutral `Candidate N` labels.
 
 Upload responses include normalized text, sections, source references, a SHA-256 fingerprint, extraction confidence, and warnings. The original file bytes are discarded after the request. Comparison requests may include the returned references; the API rejects reference lists that do not exactly match the submitted text.
 

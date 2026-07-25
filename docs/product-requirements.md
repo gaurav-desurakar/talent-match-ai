@@ -9,7 +9,7 @@ TalentMatch AI is evidence-based decision support for recruiters. It compares jo
 1. Create a saved job from its title, company job ID, and job description.
 2. Generate, review, and approve the role scorecard.
 3. Configure the provider and scoring defaults when the organisation needs values other than the local defaults.
-4. Add one to five resumes from the job workspace or reuse a saved candidate from the Candidates workspace.
+4. Add resumes from the job workspace or reuse a saved candidate from the Candidates workspace.
 5. Explicitly approve document transmission and start analysis.
 6. Follow concise workflow progress.
 7. Review scores, mandatory status, evidence, gaps, clarification flags, and interview questions.
@@ -36,7 +36,7 @@ ATS integrations, billing, SSO, automated rejection, scraping, personality infer
 
 ## Completed vertical slices
 
-The local MVP supports a job-centred hiring workflow, safe transient PDF/DOCX/TXT extraction, and up to five candidates per analysis. It includes the deterministic mock plus configurable external providers, schema-validated analysis, deterministic scoring, background progress, persisted analysis records, recruiter dispositions, deletion, and contextual exports. Candidate summaries preserve input order and intentionally avoid automatic ranking. The standalone New Comparison and Analysis History pages were removed because Jobs and Candidates provide analysis, evidence review, and export capability with the relevant saved-job or candidate context. Comparison history APIs remain available for future reporting and audit workflows.
+The local MVP supports a job-centred hiring workflow, safe transient PDF/DOCX/TXT extraction, and multi-candidate analysis. It includes the deterministic mock plus configurable external providers, schema-validated analysis, deterministic scoring, background progress, persisted analysis records, recruiter dispositions, deletion, and contextual exports. Candidate summaries preserve input order and intentionally avoid automatic ranking. The standalone New Comparison and Analysis History pages were removed because Jobs and Candidates provide analysis, evidence review, and export capability with the relevant saved-job or candidate context. Comparison history APIs remain available for future reporting and audit workflows.
 
 ## Success measures
 
